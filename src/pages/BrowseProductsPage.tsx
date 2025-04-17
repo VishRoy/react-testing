@@ -13,9 +13,7 @@ function BrowseProducts() {
   const [isCategoriesLoading, setCategoriesLoading] = useState(false);
   const [errorProducts, setErrorProducts] = useState("");
   const [errorCategories, setErrorCategories] = useState("");
-  const [selectedCategoryId, setSelectedCategoryId] = useState<
-    number | undefined
-  >();
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | undefined>();
 
   useEffect(() => {
     const fetchProducts = async () => {
