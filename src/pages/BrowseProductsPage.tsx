@@ -50,8 +50,10 @@ function BrowseProducts() {
   if (errorProducts) return <div>Error: {errorProducts}</div>;
 
   const renderCategories = () => {
-    if (isCategoriesLoading) return <Skeleton />;
-    if (errorCategories) return <div>Error: {errorCategories}</div>;
+    if (isCategoriesLoading) return <div role="progressbar" aria-label="Loading categories">
+      <Skeleton />
+    </div>;
+    if (errorCategories) return;
     return (
       <Select.Root
         onValueChange={(categoryId) =>
@@ -92,7 +94,7 @@ function BrowseProducts() {
             <Table.ColumnHeaderCell></Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
-        <Table.Body>
+        <Table.Body role={isProductsLoading ? 'progressbar' : undefined} aria-label={isProductsLoading ? 'Loading products' : undefined}>
           {isProductsLoading &&
             skeletons.map((skeleton) => (
               <Table.Row key={skeleton}>
@@ -111,7 +113,7 @@ function BrowseProducts() {
             visibleProducts.map((product) => (
               <Table.Row key={product.id}>
                 <Table.Cell>{product.name}</Table.Cell>
-                <Table.Cell>${product.price}</Table.Cell>
+                <Table.Cell>{product.price}</Table.Cell>
                 <Table.Cell>
                   <QuantitySelector product={product} />
                 </Table.Cell>
