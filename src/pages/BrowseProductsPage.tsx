@@ -53,11 +53,7 @@ function BrowseProducts() {
     </div>;
     if (errorCategories) return;
     return (
-      <Select.Root
-        onValueChange={(categoryId) =>
-          setSelectedCategoryId(parseInt(categoryId))
-        }
-      >
+      <Select.Root onValueChange={(categoryId) => setSelectedCategoryId(parseInt(categoryId))}>
         <Select.Trigger placeholder="Filter by Category" />
         <Select.Content>
           <Select.Group>
